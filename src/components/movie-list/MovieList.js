@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {MovieElement} from '../index';
 
 export default class MovieList extends Component{
 
@@ -7,46 +7,8 @@ export default class MovieList extends Component{
         return ( 
         
         <div className="w-75 d-flex flex-row flex-wrap align-content-start">
-        <div className="w-25 p-2">
-            <div className="border">film</div>
-        </div>
-        <div className="w-25 p-2">
-            <div className="border">film</div>
-        </div>
-        <div className="w-25 p-2">
-            <div className="border">film</div>
-        </div>
-        <div className="w-25 p-2">
-            <div className="border">film</div>
-        </div>
-        <div className="w-25 p-2">
-            <div className="border">film</div>
-        </div>
-        <div className="w-25 p-2">
-            <div className="border">film</div>
-        </div>
-        <div className="w-25 p-2">
-            <div className="border">film</div>
-        </div>
-        <div className="w-25 p-2">
-            <div className="border">film</div>
-        </div>
-        <div className="w-25 p-2">
-            <div className="border">film</div>
-        </div>
-        <div className="w-25 p-2">
-            <div className="border">film</div>
-        </div>
-        <div className="w-25 p-2">
-            <div className="border">film</div>
-        </div>
-        <div className="w-25 p-2">
-            <div className="border">film</div>
-        </div>
-        </div>
-        
-        
-        
+        <MovieElement/>
+        </div> 
         )
     }
 
