@@ -7,7 +7,22 @@ export default class MovieList extends Component{
         return ( 
         
         <div className="w-75 d-flex flex-row flex-wrap align-content-start">
-        <MovieElement/>
+        <MovieElement  movies={this.props.movies[0]}/>
+        <MovieElement  movies={this.props.movies[1]}/>
+        <MovieElement  movies={this.props.movies[2]}/>
+        <MovieElement  movies={this.props.movies[3]}/>
+        <MovieElement  movies={this.props.movies[0]}/>
+        <MovieElement  movies={this.props.movies[1]}/>
+        <MovieElement  movies={this.props.movies[2]}/>
+        <MovieElement  movies={this.props.movies[3]}/>
+        <MovieElement  movies={this.props.movies[0]}/>
+        <MovieElement  movies={this.props.movies[1]}/>
+        <MovieElement  movies={this.props.movies[2]}/>
+        <MovieElement  movies={this.props.movies[3]}/>
+        <MovieElement  movies={this.props.movies[0]}/>
+        <MovieElement  movies={this.props.movies[1]}/>
+        <MovieElement  movies={this.props.movies[2]}/>
+        <MovieElement  movies={this.props.movies[3]}/>
         </div> 
         )
     }
