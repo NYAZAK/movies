@@ -7,22 +7,11 @@ export default class MovieList extends Component{
         return ( 
         
         <div className="w-75 d-flex flex-row flex-wrap align-content-start">
-        <MovieElement  movies={this.props.movies[0]}/>
-        <MovieElement  movies={this.props.movies[1]}/>
-        <MovieElement  movies={this.props.movies[2]}/>
-        <MovieElement  movies={this.props.movies[3]}/>
-        <MovieElement  movies={this.props.movies[0]}/>
-        <MovieElement  movies={this.props.movies[1]}/>
-        <MovieElement  movies={this.props.movies[2]}/>
-        <MovieElement  movies={this.props.movies[3]}/>
-        <MovieElement  movies={this.props.movies[0]}/>
-        <MovieElement  movies={this.props.movies[1]}/>
-        <MovieElement  movies={this.props.movies[2]}/>
-        <MovieElement  movies={this.props.movies[3]}/>
-        <MovieElement  movies={this.props.movies[0]}/>
-        <MovieElement  movies={this.props.movies[1]}/>
-        <MovieElement  movies={this.props.movies[2]}/>
-        <MovieElement  movies={this.props.movies[3]}/>
+
+        {
+            this.props.movies.map((m, index) =>  <MovieElement key={m.title}  movie={(m) } updateSelectedMovie={() => this.props.updateSelectedMovie(index)}/>) 
+            // dans update on passe la référence d'une methode sans l'invoqué, mais dans cette methode on invoque selected movie
+        }
         </div> 
         )
     }

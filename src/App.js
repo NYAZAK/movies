@@ -43,14 +43,23 @@ class App extends Component {
     }
   }
 
+  updateSelectedMovie = (index) => {
+    // const index = this.state.movies.findIndex( (currentMovie) => {
+    //   return title === currentMovie.title;
+    // });
+    this.setState({
+      selectedMovie: index
+    })
+  }
+
 
   render() {
     return (
       <div className="App d-flex flex-column">
       <Header/>
       <div className="d-flex flex-row border flex-fill pt-4 p-2">
-      <MovieList movies={this.state.movies}/>
-      <MovieDetails movies={this.state.movies[this.state.selectedMovie]}/>
+      <MovieList movies={this.state.movies}    updateSelectedMovie={this.updateSelectedMovie}/>
+      <MovieDetails films={this.state.movies[this.state.selectedMovie]}/>
       </div>
       </div>
     );
