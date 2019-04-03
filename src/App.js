@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Header, MovieDetails, MovieList, Loading} from './components';
 import dataMovie from './data';
-
+import apiMovie from './conf/api.movie';
 
 class App extends Component {
 
@@ -20,9 +20,6 @@ class App extends Component {
       loaded: true
       })
     }, 1000)
-
-
-
   }
 
   updateSelectedMovie = (index) => {
@@ -32,6 +29,16 @@ class App extends Component {
     this.setState({
       selectedMovie: index
     })
+  }
+
+  componentDidMount(){
+    apiMovie.get('/discover/movie')
+    .then(
+      res => console.log(res)
+    )
+    .catch(
+    err => console.log({error : err})
+    )
   }
 
 
