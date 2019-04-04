@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Header } from './components';
 import apiMovie, { movieMap } from './conf/api.movie';
 import Film from './features/films';
-import {BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import Favoris from './features/favoris';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 class App extends Component {
 
   constructor(props) {
@@ -11,7 +12,8 @@ class App extends Component {
     this.state = {
       movies: null,
       selectedMovie: 0,
-      loaded: false // c'est un flag pour notre affichage 
+      loaded: false, // c'est un flag pour notre affichage 
+      favoris: []
     }
   }
 
@@ -48,20 +50,36 @@ class App extends Component {
     })
   }
 
+  addFavoris = (title) => {
+      
+  }
+
 
   render() {
     return (
-      <div className="App d-flex flex-column">
-        <Header />
-        <Film 
-        movies={this.state.movies}
-        updateSelectedMovie={this.updateSelectedMovie}
-        films={this.state.movies}
-        loaded={this.state.loaded}
-        updateMovies={this.updateMovies}
-        selectedMovie={this.state.selectedMovie}
-        />
-      </div>
+      <Router>
+        <div className="App d-flex flex-column">
+          <Header />
+          <Switch>
+            <Route path="/films" render={(props) => {
+              return (
+                <Film
+                  { ...props }
+                  movies={this.state.movies}
+                  updateSelectedMovie={this.updateSelectedMovie}
+                  films={this.state.movies}
+                  loaded={this.state.loaded}
+                  updateMovies={this.updateMovies}
+                  selectedMovie={this.state.selectedMovie}
+                />
+              )
+            }} />
+            <Route path="/favoris" component={Favoris} />
+            <Redirect to="/films" />
+          </Switch>
+
+        </div>
+      </Router>
     );
   }
 }
