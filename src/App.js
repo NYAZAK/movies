@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Header, MovieDetails, MovieList, Loading, SearchBar} from './components';
-import apiMovie from './conf/api.movie';
+import apiMovie, {movieMap} from './conf/api.movie';
 
 class App extends Component {
 
@@ -28,13 +28,7 @@ class App extends Component {
     .then(
       res => res.data.results 
     ).then(movieApi => {
-      const movies = movieApi.map(m => ({
-          img : `https://image.tmdb.org/t/p/w500${m.poster_path}`,
-          title: m.title,
-          description: m.overview,
-          details: `${m.release_date} | ${m.vote_average} / 10 | ${m.vote_count} ❤`
-        }))
-        console.log(movies);
+      const movies = movieApi.map(movieMap)
         this.updateMovies(movies);
       }
     )
@@ -44,7 +38,9 @@ class App extends Component {
   }
 
 
-  updateMovies(movies){
+  updateMovies = (movies) => {
+    {/** on binde le this pour qu'il fasse reference non 
+  pas a la methode lors de son execution, mais au this du composant app */}
     this.setState({
       movies,
       loaded: true
