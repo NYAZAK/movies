@@ -40,10 +40,10 @@ class App extends Component {
       )
   }
 
-
+    /* on binde le this pour qu'il fasse reference non 
+  pas a la methode lors de son execution, mais au this du composant app **/
   updateMovies = (movies) => {
-    {/** on binde le this pour qu'il fasse reference non 
-  pas a la methode lors de son execution, mais au this du composant app */}
+
     this.setState({
       movies,
       loaded: true
@@ -93,7 +93,16 @@ this.setState({
                 />
               )
             }} />
-            <Route path="/favoris" component={Favoris} />
+            <Route path="/favoris" render={(props) => {
+              return (
+              <Favoris 
+              {...props}
+              favoris={this.state.favoris}
+              removeFavoris={this.removeFavoris}
+              loaded={this.state.loaded}
+
+              />)
+            }} />
             <Redirect to="/films" />
           </Switch>
 
