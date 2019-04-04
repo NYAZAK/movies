@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Formik} from 'formik';
-import searchIcon from '../asset/searchicon.png';
-import apiMovie, {movieMap} from '../../conf/api.movie';
+import searchIcon from '../../../../components/asset/searchicon.png';
+import apiMovie, {movieMap} from '../../../../conf/api.movie';
 export default class SearchBar extends Component{
 
 

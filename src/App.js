@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {Header, MovieDetails, MovieList, Loading, SearchBar} from './components';
-import apiMovie, {movieMap} from './conf/api.movie';
-
+import { Header } from './components';
+import apiMovie, { movieMap } from './conf/api.movie';
+import Film from './features/films';
+import {BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 class App extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -23,18 +24,18 @@ class App extends Component {
     })
   }
 
-  componentDidMount(){
+  componentDidMount() {
     apiMovie.get('/discover/movie')
-    .then(
-      res => res.data.results 
-    ).then(movieApi => {
-      const movies = movieApi.map(movieMap)
+      .then(
+        res => res.data.results
+      ).then(movieApi => {
+        const movies = movieApi.map(movieMap)
         this.updateMovies(movies);
       }
-    )
-    .catch(
-    err => console.log({error : err})
-    )
+      )
+      .catch(
+        err => console.log({ error: err })
+      )
   }
 
 
@@ -51,17 +52,15 @@ class App extends Component {
   render() {
     return (
       <div className="App d-flex flex-column">
-      <Header/>
-      <SearchBar updateMovies={this.updateMovies}/>
-      { this.state.loaded ? (
-        <div className="d-flex flex-row border flex-fill pt-4 p-2">
-        <MovieList movies={this.state.movies} updateSelectedMovie={this.updateSelectedMovie}/>
-        <MovieDetails films={this.state.movies[this.state.selectedMovie]}/>
-        </div>
-      ) : (
-        <Loading />
-      ) }
-      
+        <Header />
+        <Film 
+        movies={this.state.movies}
+        updateSelectedMovie={this.updateSelectedMovie}
+        films={this.state.movies}
+        loaded={this.state.loaded}
+        updateMovies={this.updateMovies}
+        selectedMovie={this.state.selectedMovie}
+        />
       </div>
     );
   }
